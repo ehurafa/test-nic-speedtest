@@ -1,22 +1,14 @@
-<header>
- <div class="container">
-   <app-login></app-login>
- </div>
-</header>
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6"><app-message></app-message></div>
+
+    <header class="block" style="width:100%; height:200px; display:block; background:#ddd">
+        <div class="container">
+          <div class="logo">logotipo</div>
+          <div class="menu" style="float:right"> menu</div>
+        </div>
+       </header>
+
+    <router-outlet></router-outlet>
   </div>
 
-
-  <div class="row">
-    <div class="col-md-6"><app-clock></app-clock></div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6"><app-result></app-result></div>
-  </div>
-
-</div>
