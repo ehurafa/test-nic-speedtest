@@ -10,6 +10,7 @@ import { ClockComponent } from './clock/clock.component';
 import { MessageComponent } from './message/message.component';
 import { ResultComponent } from './result/result.component';
 import { HomeComponent } from './home/home.component';
+import { HistoryService } from './services/history.service'
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ HistoryService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

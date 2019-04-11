@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from '../services/history.service'
+
 
 @Component({
   selector: 'app-clock',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClockComponent implements OnInit {
 
-  velocity = {
+  velocity: any = {
     download: {
       value:0,
       list:[],
@@ -22,45 +24,59 @@ export class ClockComponent implements OnInit {
 
   totalTime: number = 0;
 
-  constructor() { }
+  measurementHistoryDownload: any = [];
+  measurementHistoryUpload: any = [];
+
+  constructor( private historyService: HistoryService ) { }
 
   getRandomInt(min, max) {
-    //return Math.floor(Math.random() * (max - min + 1)) + min;
     return + parseFloat(Math.random() * (max - min + 1) + min).toFixed(2);
   }
 
-  calcNet( metric ){
+  getHistory( metric ){
+    return this.historyService.getMeasurementHistory( metric );
+    console.log( 'this.historyService.getMeasurementHistory() ', this.historyService.getMeasurementHistory( metric ) );
+  }
 
-    console.log('bla ', metric);
+  setHistory(item, metric){
+    this.historyService.setMeasurementHistory( item, metric );
+    console.log('this.measurementHistory ',  item );
+  }
 
+  calcNet( metric, measurement ){
     let loop = setInterval(()=>{
       this.totalTime ++;
-
       if( this.totalTime < 21){
-
         metric.value = this.getRandomInt(90,100);
-        metric.list.push(this.getRandomInt(90,100));
-
+        metric.list.push(metric.value);
       }else{
-
         let total = metric.list.reduce(function(t, n){
             return t + n;
            }, 0);
-        console.log('reduce ', (total / 10).toFixed(2));
-        console.log('lista ', metric.list);
-        console.log('lista length ', metric.list.length);
+
+           measurement.push( total );
+           console.log('this.measurementHistory  ', measurement );
+          this.setHistory( measurement, metric );
+
         clearInterval(loop);
-
+        //this.getHistory();
       }
-      console.log('range ', this.getRandomInt(90,200));
-      console.log('rr ', this.totalTime);
-
     }, 100);
 
+
   }
+
+
   ngOnInit() {
-    this.calcNet(this.velocity.download);
-    this.calcNet(this.velocity.upload);
+    let historyResultDonload = this.getHistory('download');
+    console.log('historyResult ',  historyResultDonload);
+    console.log('historyResult ', typeof historyResultDonload);
+
+    if(  historyResultDonload  != undefined || historyResultDonload  != null  ){
+      this.measurementHistoryDownload.push( this.getHistory('download') );
+    }
+    this.calcNet(this.velocity.download, this.measurementHistoryDownload);
+    this.calcNet(this.velocity.upload, this.measurementHistoryUpload);
   }
 
 }
