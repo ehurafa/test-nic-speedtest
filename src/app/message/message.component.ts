@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
+  msg: string = 'Medindo a velocidade da sua internet...';
+
   constructor() { }
 
   ngOnInit() {

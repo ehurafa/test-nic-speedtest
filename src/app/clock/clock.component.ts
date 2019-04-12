@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HistoryService } from '../services/history.service'
 
 
@@ -8,6 +8,10 @@ import { HistoryService } from '../services/history.service'
   styleUrls: ['./clock.component.scss']
 })
 export class ClockComponent implements OnInit {
+
+  @Output() message:EventEmitter<any> = new EventEmitter();
+
+  msg: string = "Veja abaixo o resultado do teste de conexão!";
 
   velocity: any = {
     download: {
@@ -106,6 +110,8 @@ export class ClockComponent implements OnInit {
 
     this.buildListMeasurements();
     this.historyService.setGlobalMeasurementHistory( this.measurementHistory );
+
+    this.message.emit(this.msg);
 
     console.log('this.measurementHistory ', this.measurementHistory);
 

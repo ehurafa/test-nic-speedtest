@@ -1,16 +1,29 @@
-<div class="historico">
-  <table>
-    <thead>
-      <th>Download</th>
-      <th>Upload</th>
-    </thead>
 
-    <tbody>
-        <tr *ngFor="let item of history">
-          <td>{{ item.download }}</td>
-          <td>{{ item.upload }}</td>
-        </tr>
-    </tbody>
+  <div class="history">
+    <div class="row">
+      <div class="col-md-12 block">
 
-  </table>
+        <button routerLink="/">Novo teste</button>
+
+      </div>
+
+  </div>
+  <div class="row historico">
+    <table class="table table-stripped">
+      <thead>
+        <th>Download</th>
+        <th>Upload</th>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let item of history">
+            <td>{{ item.download }} MB</td>
+            <td>{{ item.upload }} MB</td>
+          </tr>
+      </tbody>
+
+    </table>
+  </div>
 </div>
+
+

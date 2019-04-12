@@ -2,13 +2,25 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
+/* vars */
+/* colors*/
+$white : #ffffff;
+$lightBlack: #3c3c3c;
+$black: #171717;
+$lightOrange: #ffa800;
+$orange: #ff6600;
+
+
 /* content */
 .container{
-  max-width:1000px;
+  max-width:882px;
 }
-
 .block{
   width:100%;
   float:left;
   min-height:80px;
+}
+
+body{
+  background: $lightBlack;
 }
