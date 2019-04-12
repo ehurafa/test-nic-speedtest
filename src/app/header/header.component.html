@@ -1,0 +1,30 @@
+<header class="block " >
+    <div class="container">
+
+      <div class="row">
+          <div class="col-md-3 col-xs-12">
+              <!-- logotipo -->
+              <div class="logo">
+                 <h1>
+                    <img src="assets/images/logo.png" alt="Logotipo speedtste" />
+                 </h1>
+              </div>
+          </div>
+          <div class="col-md-9 col-xs-12">
+             <!-- user -->
+             <div class="user" *ngIf="!edit">
+                <img src="assets/images/edit.png" alt="Editar o seu nome"  (click)="editing()" />
+                <a >{{ name }} </a>
+              </div>
+              <div class="input" *ngIf="edit">
+                  <button class="btn" (click)="editing()">Salvar</button>
+                <input type="text" [(ngModel)]="name" />
+
+              </div>
+
+          </div>
+      </div>
+
+
+    </div>
+</header>

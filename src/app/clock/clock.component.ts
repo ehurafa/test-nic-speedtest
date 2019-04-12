@@ -11,7 +11,7 @@ export class ClockComponent implements OnInit {
 
   @Output() message:EventEmitter<any> = new EventEmitter();
 
-  msg: string = "Veja abaixo o resultado do teste de conexão!";
+  msg: string = "Estamos medindo a velocidade da sua internet...";
 
   velocity: any = {
     download: {
@@ -49,8 +49,11 @@ export class ClockComponent implements OnInit {
           arr.push( media.toFixed(2) );
           this.setHistory( arr, metric );
           clearInterval(loop);
+          this.msg = 'Confira abaixo o resultado do teste!';
       }
     }, 50);
+
+
 
   }
 
@@ -89,7 +92,6 @@ export class ClockComponent implements OnInit {
       historyResultDownload  == null ||
       historyResultDownload  == '')){
       this.measurementHistoryDownload = JSON.parse(historyResultDownload);
-      console.log(historyResultDownload );
       this.isHistory = true;
     }else{
       this.isHistory = false;
@@ -100,20 +102,17 @@ export class ClockComponent implements OnInit {
       historyResultUpload  == null ||
       historyResultUpload  == '')){
       this.measurementHistoryUpload = JSON.parse(historyResultUpload);
-      console.log(historyResultUpload );
     }
 
     this.calcNet(this.velocity.download, 'download', this.measurementHistoryDownload);
     this.calcNet(this.velocity.upload, 'upload', this.measurementHistoryUpload);
-
-    console.log('this.isHistory ', this.isHistory);
 
     this.buildListMeasurements();
     this.historyService.setGlobalMeasurementHistory( this.measurementHistory );
 
     this.message.emit(this.msg);
 
-    console.log('this.measurementHistory ', this.measurementHistory);
+
 
   }
 

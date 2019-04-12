@@ -18,7 +18,6 @@ $orange: #ff6600;
 .block{
   width:100%;
   float:left;
-  min-height:80px;
 }
 
 body{
@@ -34,17 +33,39 @@ header{
   .logo{
     margin-top:18px;
   }
+  .input{
+    float:right;
+    width:300px;
+    height:100px;
+    input{
+      float:right;
+      border:0;
+      margin-top:40px;
+      padding-left:5px;
+    }
+    .btn{
+      padding: 2px 10px;
+      text-decoration: none;
+      font-size:14px;
+      float:right;
+      margin-top:40px;
+      margin-left:5px;
+    }
+  }
   .user{
     float:right;
-    margin-top:40px;
+    width:300px;
+    height:100px;
     a{
       color: $white !important;
-      float:left;
-      margin:4px 7px 0 0;
+      float: right;
+      margin:44px 7px 0 0;
       cursor:pointer;
     }
     img{
-      float:left;
+      float: right;
+      margin-top:40px;
+      cursor:pointer;
     }
   }
 }
@@ -77,3 +98,70 @@ header{
     color:$white;
   }
 }
+
+.clock{
+  border-top:1px solid $lightOrange;
+  margin:30px  0 50px 0;
+  padding-top:40px;
+  .bloco{
+    color:$white;
+    width:100%;
+    padding-bottom:10px;
+    &.line{
+      border-left:1px solid $lightOrange;
+    }
+    p{
+      width:100%;
+      font-size:18px;
+      font-weight:700;
+    }
+    h2{
+      width:100%;
+      font-size:60px;
+      font-weight:700;
+      span{
+        font-size:25px;
+        font-weight:400;
+      }
+    }
+  }
+}
+
+.history{
+  padding-top:80px;
+  .table{
+    margin-top:40px;
+    thead{
+      th{
+        border-bottom:2px solid #dee2e6;
+        color: $white;
+      }
+    }
+    tr{
+      td{
+        border-top:1px solid #343434 !important;
+        color: $white;
+      }
+    }
+  }
+}
+
+
+/* responsive */
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {  }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {  }
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  header{
+    text-align:center;
+    height: auto;
+  }
+ }

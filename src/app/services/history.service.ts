@@ -32,7 +32,6 @@ export class HistoryService {
     }
   }
   setGlobalMeasurementHistory( item ){
-    console.log('setGlobalMeasurementHistory ', item );
     localStorage.setItem('localMeasurementHistory', JSON.stringify(item));
   }
 
