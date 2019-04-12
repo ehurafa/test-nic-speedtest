@@ -12,13 +12,11 @@ export class ClockComponent implements OnInit {
   velocity: any = {
     download: {
       value:0,
-      list:[],
-      average:0
+      list:[]
     },
     upload: {
       value:0,
-      list:[],
-      average:0
+      list:[]
     }
   };
 
@@ -29,54 +27,50 @@ export class ClockComponent implements OnInit {
 
   constructor( private historyService: HistoryService ) { }
 
+  calcNet( measurement, metric, arr: any ){
+
+
+    let loop = setInterval(()=>{
+      this.totalTime ++;
+      if( this.totalTime < 21){
+        measurement.value = this.getRandomInt(90,100);
+        measurement.list.push(measurement.value);
+      }else{
+          let sum = measurement.list.reduce(function(t, n){
+          return t + n;
+          }, 0);
+          let media =  sum / 10;
+          measurement.value = media.toFixed(2);
+          arr.push( media.toFixed(2) );
+          this.setHistory( arr, metric );
+          clearInterval(loop);
+      }
+    }, 50);
+
+  }
+
   getRandomInt(min, max) {
     return + parseFloat(Math.random() * (max - min + 1) + min).toFixed(2);
   }
 
   getHistory( metric ){
     return this.historyService.getMeasurementHistory( metric );
-    console.log( 'this.historyService.getMeasurementHistory() ', this.historyService.getMeasurementHistory( metric ) );
   }
 
   setHistory(item, metric){
     this.historyService.setMeasurementHistory( item, metric );
-    console.log('this.measurementHistory ',  item );
   }
-
-  calcNet( metric, measurement ){
-    let loop = setInterval(()=>{
-      this.totalTime ++;
-      if( this.totalTime < 21){
-        metric.value = this.getRandomInt(90,100);
-        metric.list.push(metric.value);
-      }else{
-        let total = metric.list.reduce(function(t, n){
-            return t + n;
-           }, 0);
-
-           measurement.push( total );
-           console.log('this.measurementHistory  ', measurement );
-          this.setHistory( measurement, metric );
-
-        clearInterval(loop);
-        //this.getHistory();
-      }
-    }, 100);
-
-
-  }
-
 
   ngOnInit() {
-    let historyResultDonload = this.getHistory('download');
-    console.log('historyResult ',  historyResultDonload);
-    console.log('historyResult ', typeof historyResultDonload);
+    let historyResultDownload = this.getHistory('download');
 
-    if(  historyResultDonload  != undefined || historyResultDonload  != null  ){
+    if( ! (
+      historyResultDownload  == undefined ||
+      historyResultDownload  == null ||
+      historyResultDownload  == '')){
       this.measurementHistoryDownload.push( this.getHistory('download') );
     }
-    this.calcNet(this.velocity.download, this.measurementHistoryDownload);
-    this.calcNet(this.velocity.upload, this.measurementHistoryUpload);
+    this.calcNet(this.velocity.download, 'download', this.measurementHistoryDownload);
   }
 
 }

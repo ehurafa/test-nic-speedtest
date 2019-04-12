@@ -8,7 +8,6 @@ export class HistoryService {
   constructor() { }
 
   getMeasurementHistory( metric ){
-    console.log('metric ', metric );
     if( metric == 'download'){
       return localStorage.getItem('localMeasurementHistoryDownload');
     }
@@ -17,10 +16,9 @@ export class HistoryService {
       return localStorage.getItem('localMeasurementHistoryUpload');
     }
 
-    console.log('>> ', localStorage.getItem('localMeasurementHistoryDownload'));
   }
 
-  setMeasurementHistory(item, metric ){
+  setMeasurementHistory( item, metric ){
     if( metric == 'download'){
       localStorage.setItem('localMeasurementHistoryDownload', item);
     }
@@ -28,12 +26,10 @@ export class HistoryService {
     if( metric == 'upload'){
       localStorage.setItem('localMeasurementHistoryUpload', item);
     }
-
   }
 
   getMeasurementHistoryUpload(){
     return localStorage.getItem('localMeasurementHistoryUpload');
-    console.log('>> ', localStorage.getItem('localMeasurementHistoryUpload'));
   }
 
   setMeasurementHistoryUpload(item){

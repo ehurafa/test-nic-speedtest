@@ -5,14 +5,14 @@ import { LoginComponent } from './login/login.component';
 
 
 const APP_ROUTES: Routes = [
-  { path: 'cursos',
-    loadChildren: './cursos/cursos.module#CursosModule'
-  },
-  { path: 'alunos',
-    loadChildren: './alunos/alunos.module#AlunosModule'
-  },
-  { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent }
+  // { path: 'cursos',
+  //   loadChildren: './cursos/cursos.module#CursosModule'
+  // },
+  // { path: 'alunos',
+  //   loadChildren: './alunos/alunos.module#AlunosModule'
+  // },
+  // { path: 'login', component: LoginComponent },
+   { path: '', component: HomeComponent }
 ];
 
 
