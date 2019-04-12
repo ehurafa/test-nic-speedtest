@@ -9,22 +9,25 @@ export class HistoryService {
 
   getMeasurementHistory( metric ){
     if( metric == 'download'){
-      return localStorage.getItem('localMeasurementHistoryDownload');
+      let res = localStorage.getItem('localMeasurementHistoryDownload');
+     // console.log('res: ', JSON.parse(res));
+      return res;
     }
 
     if( metric == 'upload'){
-      return localStorage.getItem('localMeasurementHistoryUpload');
+      let res = localStorage.getItem('localMeasurementHistoryUpload');
+      return res;
     }
 
   }
 
   setMeasurementHistory( item, metric ){
     if( metric == 'download'){
-      localStorage.setItem('localMeasurementHistoryDownload', item);
+      localStorage.setItem('localMeasurementHistoryDownload', JSON.stringify(item));
     }
 
     if( metric == 'upload'){
-      localStorage.setItem('localMeasurementHistoryUpload', item);
+      localStorage.setItem('localMeasurementHistoryUpload', JSON.stringify(item));
     }
   }
 

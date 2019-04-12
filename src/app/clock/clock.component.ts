@@ -35,6 +35,7 @@ export class ClockComponent implements OnInit {
       if( this.totalTime < 21){
         measurement.value = this.getRandomInt(90,100);
         measurement.list.push(measurement.value);
+
       }else{
           let sum = measurement.list.reduce(function(t, n){
           return t + n;
@@ -62,13 +63,23 @@ export class ClockComponent implements OnInit {
   }
 
   ngOnInit() {
-    let historyResultDownload = this.getHistory('download');
+    let historyResultDownload: any = this.getHistory('download');
+
+    console.log(historyResultDownload );
+    console.log(typeof historyResultDownload );
 
     if( ! (
       historyResultDownload  == undefined ||
       historyResultDownload  == null ||
       historyResultDownload  == '')){
-      this.measurementHistoryDownload.push( this.getHistory('download') );
+      //historyResultDownload = historyResultDownload.split(',');
+      console.log(typeof historyResultDownload );
+      console.log(historyResultDownload );
+      //this.measurementHistoryDownload.push( historyResultDownload );
+      this.measurementHistoryDownload = JSON.parse(historyResultDownload);
+      console.log(historyResultDownload );
+    }else{
+      console.log('vazio');
     }
     this.calcNet(this.velocity.download, 'download', this.measurementHistoryDownload);
   }
