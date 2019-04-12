@@ -21,14 +21,14 @@ export class ClockComponent implements OnInit {
   };
 
   totalTime: number = 0;
-
+  isHistory: boolean = false;
+  measurementHistory: any = [];
   measurementHistoryDownload: any = [];
   measurementHistoryUpload: any = [];
 
   constructor( private historyService: HistoryService ) { }
 
-  calcNet( measurement, metric, arr: any ){
-
+  calcNet( measurement, metric: any, arr: any ){
 
     let loop = setInterval(()=>{
       this.totalTime ++;
@@ -48,6 +48,10 @@ export class ClockComponent implements OnInit {
       }
     }, 50);
 
+    console.log(' this.measurementHistoryDownload ',  this.measurementHistoryDownload);
+    console.log(' this.measurementHistoryUpload ',  this.measurementHistoryUpload);
+
+
   }
 
   getRandomInt(min, max) {
@@ -62,26 +66,50 @@ export class ClockComponent implements OnInit {
     this.historyService.setMeasurementHistory( item, metric );
   }
 
+  buildListMeasurements(){
+    if(this.isHistory){
+      let historyResultDownload: any = JSON.parse(this.getHistory('download'));
+      let historyResultUpload: any = JSON.parse(this.getHistory('upload'));
+      for (let i = 0; i < historyResultDownload.length; i++) {
+        let obj = {
+          download: historyResultDownload[i],
+          upload: historyResultUpload[i]
+        };
+        this.measurementHistory.push(obj);
+      }
+
+    }
+  }
+
   ngOnInit() {
     let historyResultDownload: any = this.getHistory('download');
-
-    console.log(historyResultDownload );
-    console.log(typeof historyResultDownload );
+    let historyResultUpload: any = this.getHistory('upload');
 
     if( ! (
       historyResultDownload  == undefined ||
       historyResultDownload  == null ||
       historyResultDownload  == '')){
-      //historyResultDownload = historyResultDownload.split(',');
-      console.log(typeof historyResultDownload );
-      console.log(historyResultDownload );
-      //this.measurementHistoryDownload.push( historyResultDownload );
       this.measurementHistoryDownload = JSON.parse(historyResultDownload);
       console.log(historyResultDownload );
+      this.isHistory = true;
     }else{
-      console.log('vazio');
+      this.isHistory = false;
     }
+
+    if( ! (
+      historyResultUpload  == undefined ||
+      historyResultUpload  == null ||
+      historyResultUpload  == '')){
+      this.measurementHistoryUpload = JSON.parse(historyResultUpload);
+      console.log(historyResultUpload );
+    }
+
     this.calcNet(this.velocity.download, 'download', this.measurementHistoryDownload);
+    this.calcNet(this.velocity.upload, 'upload', this.measurementHistoryUpload);
+
+    console.log('this.isHistory ', this.isHistory);
+    console.log('this.measurementHistory ', this.measurementHistory);
+
   }
 
 }

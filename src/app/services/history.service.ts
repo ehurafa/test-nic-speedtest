@@ -9,14 +9,11 @@ export class HistoryService {
 
   getMeasurementHistory( metric ){
     if( metric == 'download'){
-      let res = localStorage.getItem('localMeasurementHistoryDownload');
-     // console.log('res: ', JSON.parse(res));
-      return res;
+      return localStorage.getItem('localMeasurementHistoryDownload');
     }
 
     if( metric == 'upload'){
-      let res = localStorage.getItem('localMeasurementHistoryUpload');
-      return res;
+      return localStorage.getItem('localMeasurementHistoryUpload');
     }
 
   }
@@ -29,14 +26,6 @@ export class HistoryService {
     if( metric == 'upload'){
       localStorage.setItem('localMeasurementHistoryUpload', JSON.stringify(item));
     }
-  }
-
-  getMeasurementHistoryUpload(){
-    return localStorage.getItem('localMeasurementHistoryUpload');
-  }
-
-  setMeasurementHistoryUpload(item){
-    localStorage.setItem('localMeasurementHistoryUpload', item);
   }
 
 }
