@@ -1,4 +1,4 @@
-# PMCR Test
+# Internet Speed Test
 
 Teste de habilidades necessárias para as tarefas de Front-end. Com foco em UI/UX
 
