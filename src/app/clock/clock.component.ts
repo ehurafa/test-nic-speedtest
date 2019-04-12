@@ -48,10 +48,6 @@ export class ClockComponent implements OnInit {
       }
     }, 50);
 
-    console.log(' this.measurementHistoryDownload ',  this.measurementHistoryDownload);
-    console.log(' this.measurementHistoryUpload ',  this.measurementHistoryUpload);
-
-
   }
 
   getRandomInt(min, max) {
@@ -84,7 +80,6 @@ export class ClockComponent implements OnInit {
   ngOnInit() {
     let historyResultDownload: any = this.getHistory('download');
     let historyResultUpload: any = this.getHistory('upload');
-
     if( ! (
       historyResultDownload  == undefined ||
       historyResultDownload  == null ||
@@ -108,6 +103,10 @@ export class ClockComponent implements OnInit {
     this.calcNet(this.velocity.upload, 'upload', this.measurementHistoryUpload);
 
     console.log('this.isHistory ', this.isHistory);
+
+    this.buildListMeasurements();
+    this.historyService.setGlobalMeasurementHistory( this.measurementHistory );
+
     console.log('this.measurementHistory ', this.measurementHistory);
 
   }

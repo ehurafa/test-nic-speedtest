@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class HistoryService {
 
+
   constructor() { }
 
   getMeasurementHistory( metric ){
@@ -17,6 +18,9 @@ export class HistoryService {
     }
 
   }
+  getGlobalMeasurementHistory(){
+    return localStorage.getItem('localMeasurementHistory');
+  }
 
   setMeasurementHistory( item, metric ){
     if( metric == 'download'){
@@ -27,5 +31,10 @@ export class HistoryService {
       localStorage.setItem('localMeasurementHistoryUpload', JSON.stringify(item));
     }
   }
+  setGlobalMeasurementHistory( item ){
+    console.log('setGlobalMeasurementHistory ', item );
+    localStorage.setItem('localMeasurementHistory', JSON.stringify(item));
+  }
+
 
 }
