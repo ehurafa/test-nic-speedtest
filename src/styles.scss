@@ -24,3 +24,26 @@ $orange: #ff6600;
 body{
   background: $lightBlack;
 }
+
+header{
+  width:100%;
+  height:100px;
+  display:block;
+  background: $black;
+  .logo{
+    margin-top:18px;
+  }
+  .user{
+    float:right;
+    margin-top:40px;
+    a{
+      color: $white !important;
+      float:left;
+      margin:4px 7px 0 0;
+      cursor:pointer;
+    }
+    img{
+      float:left;
+    }
+  }
+}
