@@ -11,7 +11,7 @@ Estas instruções irão levá-lo a uma cópia do projeto em funcionamento em su
 O que você precisa para rodar o projeto
 
 ```
-* NodeJS. De preferência uma versão atualizada. Foi usada a versão 8.11.3
+* NodeJS. De preferência uma versão atualizada. Foi usada a versão 10.15.3
 * Angular 6.0.0
 * Suporte Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+.
 
