@@ -23,6 +23,7 @@ $orange: #ff6600;
 
 body{
   background: $lightBlack;
+  font-family: 'Open Sans', sans-serif;
 }
 
 header{
@@ -45,5 +46,34 @@ header{
     img{
       float:left;
     }
+  }
+}
+
+.message{
+  text-align:center;
+  padding:90px 0;
+  h3{
+    color: $white;
+    font-size:28px;
+    font-weight:700;
+  }
+}
+
+.btn{
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: $white;
+  color: $black;
+  border-radius:0;
+  font-size:19px;
+  font-weight:bold;
+  text-transform: uppercase;
+  padding:15px 50px;
+  &:hover{
+    background-color: $orange;
+    color:$white;
   }
 }
