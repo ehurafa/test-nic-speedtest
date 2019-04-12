@@ -1,27 +1,35 @@
-# SpeedTest
+# PMCR Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+Teste de habilidades necessárias para as tarefas de Front-end. Com foco em UI/UX
 
-## Development server
+## Iniciando o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Estas instruções irão levá-lo a uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste.
 
-## Code scaffolding
+### Pré-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O que você precisa para rodar o projeto
 
-## Build
+```
+* NodeJS. De preferência uma versão atualizada. Foi usada a versão 8.11.3
+* Angular 6.0.0
+* Suporte Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
 
-## Running unit tests
+### Instalação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para rodar o projeto basta seguir os passos à seguir
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* Baixar ou clonar o projeto deste repositório
 
-## Further help
+* Abrir o terminal na pasta do projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Executar o comando "npm install" para baixar as dependências do projeto 
+
+* "start": "ng serve",  "build": "ng build"
+
+```
+
+### :)
